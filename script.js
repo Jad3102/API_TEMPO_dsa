@@ -1,33 +1,61 @@
-const express = require('express');
-var http = require('http');
-const app = express();
-const jwt = require('jsonwebtoken');
+const restify = require('restify')
+const errors = require('restify-errors')
 
-function generateToken(user) {
-    const token = jwt.sign({ id: user.id, username: user.username }, process.env.JWT_SECRET, { expiresIn: '1h' });
-    return token;
-  }
+const servidor = restify.createServer({
+    name:'lojinha',
+    version: '1.0.0'
+});
 
-function authenticateToken(req, res, next) {
-const authHeader = req.headers.authorization;
-const token = authHeader && authHeader.split(' ')[1];
-if (token == null) {
-    return res.sendStatus(401);
+servidor.use(restify.plugins.acceptParser(servidor.acceptable));
+servidor.use(restify.plugins.queryParser());
+servidor.use(restify.plugins.bodyParser());
+
+servidor.listen(8080), function() {
+    console.log("% executando em %s", servidor.name, servidor.url)
 }
 
-jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-    if (err) {
-    return res.sendStatus(403);
+var knex = require('knex')({
+    client:'msql',
+    connection:{
+        host:'localhost',
+        user:'root',
+        password:'',
+        database:'api_rest'
     }
-    req.user = user;
-    next();
-});
-}
-
-app.get('/home',(req,res) => {
-    res.status(200).send("Bem-vindo a nossa API do tempo!");
 });
 
-http.createServer(app).listen(8080, () => {
-    console.log('Servidor iniciado em http://localhost:8080/home')
-})
+servidor.get('/',  (req, res, next) => {
+    res.send('Bem-Vindo(a) a API Loja! ' );
+});  
+
+servidor.get('/produto',  (req, res, next) => {
+    knex('produtos' ).then ((dados) =>{
+        res.send(dados);
+    }, next);
+}, next);
+
+servidor.get('/produtos/:id',  (req, res, next) => {
+    const id = req.params.idProd;
+    knex('produtos' )
+        .where('id', idProduto)
+        .first()
+        .then( (dados) =>{
+            if(!dados ){
+                return res.send(errors.BadRequestError('Produto Não encontrado'));
+            }
+            res.send(dados);
+        }, next);
+    });
+   
+servidor.get('/produtos',  (req, res, next) => {
+    const idProduto = req.params.idProd;
+    knex('produtos' )
+        .where('id' , idProdutos)
+        .delete( )
+        .then ((dados) =>{
+            if( !dados){
+                return res.send(new errors.BadRequestError('Produtos não encontrados ' ));
+            }
+            res.send(dados);
+        }, next);
+    });
