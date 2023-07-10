@@ -47,7 +47,7 @@ servidor.get('/produtos/:id',  (req, res, next) => {
         }, next);
     });
    
-servidor.get('/produtos',  (req, res, next) => {
+servidor.del('/produtos',  (req, res, next) => {
     const idProduto = req.params.idProd;
     knex('produtos' )
         .where('id' , idProdutos)

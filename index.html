@@ -8,17 +8,36 @@
     <title>Projeto API_TEMPO - teste</title>
 </head>
 <body>
-    <div>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username">
+<header> 
+    <form>
+        <fieldset>   
+            <div>
+                <h1>Previsão do Tempo</h1>
+                <h2>Complete seu cadastro</h2> 
+                
+            </div>
+
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username">
+               
+            </div>
+           
+            <div>
+                <label for="pass">Password:</label>
+                <input type="password" id="pass" name="password"
+                    minlength="8" required>
+                    <br>
+            </div>
+   
+            <input type="submit" value="Sign in">
+        </fieldset>
+    </form>        
+        
     </div>
-     
-    <div>
-        <label for="pass">Password:</label>
-        <input type="password" id="pass" name="password"
-               minlength="8" required>
-    </div>
-    
-    <input type="submit" value="Sign in">
+</header>
+
+
+
 </body>
 </html>
