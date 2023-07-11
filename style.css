@@ -1,6 +1,26 @@
+body {
+    background-image:url('/home/julia/Downloads/API_TEMPO_dsa/Chuva.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    padding: 20px;
+    text-align: center;
+
+}
+
+footer {
+    background-image:url('/home/julia/Downloads/API_TEMPO_dsa/Chuva.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 label {
     display: block;
     font: 0.9rem 'Fira Sans', sans-serif;
+}
+
+h1,h2 {
+    color: white;
 }
 
 input[type='submit'],
@@ -8,12 +28,37 @@ label {
     margin-top: 1rem;
 }
 
-header {
-    background-color: #B0E0E6;
-    color: #000000;
-    padding: 20px;
-    text-align: center;
-}
 #nav{height:77px; width:100%;background: #f1f1f1;padding:7px;}
     #sup_direito{float:right; width:auto; }
         #login, #senha, #cadastrar{float:left;}
+
+.menuDias {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    justify-content: center; /* Centraliza horizontalmente */
+      }
+    
+    .menuDias li {
+    margin-right: 10px;
+    }
+    
+    .menuDias li:last-child {
+    margin-right: 0;
+    font: 0.9rem 'Fira Sans'
+    }
+    
+    .menuDias a {
+    display: block;
+    padding: 10px 20px;
+    background-color: #000000;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 20px;
+    }
+    
+    .menuDias a:hover {
+    background-color: #cc7000;
+    }
+          
