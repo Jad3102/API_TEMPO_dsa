@@ -2,7 +2,7 @@
   "name": "api_tempo_dsa",
   "version": "1.0.0",
   "description": "",
-  "main": "script.js",
+  "main": "services.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,6 +20,10 @@
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
     "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.1"
+    "jsonwebtoken": "^9.0.1",
+    "knex": "^2.5.0",
+    "mysql": "^2.18.1",
+    "restify": "^11.1.0",
+    "restify-cors-middleware2": "^2.2.1"
   }
 }
