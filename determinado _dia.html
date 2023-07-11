@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Projeto API_TEMPO</title>
+</head>
+<body>
+    <div id="tabelaDados">
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <h1>Previsão do tempo</h1>
+            <br>
+            <h2>Dados Metereológicos: Porto Alegre</h2>
+        </head>
+        <body>
+          <table>
+            <script>
+                // Fazendo uma requisição para a API
+                fetch('localhost:8080//dadospordia/:id')
+                  .then(response => response.json())
+                  .then(data => {
+                    const tabela = document.getElementById('clima_tempo');
+            
+                    // Iterando sobre os dados retornados pela API
+                    data.forEach(item => {
+                      // Criando uma nova linha na tabela
+                      const novaLinha = document.createElement('tr');
+            
+                      // Preenchendo as células da linha com os dados
+                      const colunaId = document.createElement('td');
+                      colunaId.textContent = item.id;
+                      novaLinha.appendChild(colunaId);
+            
+                      const colunaNome = document.createElement('td');
+                      colunaNome.textContent = item.nome;
+                      novaLinha.appendChild(colunaNome);
+            
+                      const colunaDescricao = document.createElement('td');
+                      colunaDescricao.textContent = item.descricao;
+                      novaLinha.appendChild(colunaDescricao);
+            
+                      // Adicionando a nova linha à tabela
+                      tabela.appendChild(novaLinha);
+                    });
+                  })
+                  .catch(error => {
+                    console.log('Erro ao buscar dados da API:', error);
+                  });
+              </script>
+            </body>
+            </html>
+          </table>
+        </body>
+        </html>
+        
+
+    </div>
+    
+</body>
+</html>
